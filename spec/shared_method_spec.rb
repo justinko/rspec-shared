@@ -15,13 +15,20 @@ describe '`shared` method' do
         end
 
         shared(:foo) { shared_value }
+        shared(:bar) { 'bar' }
 
         example { foo.should eq(2) }
         example { foo.should eq(2) }
+        example { bar.should eq('bar') }
 
         describe do
           example { foo.should eq(2) }
         end
+      end
+
+      describe do
+        shared(:foo) { :foo }
+        example { foo.should eq(:foo) }
       end
     """
 
